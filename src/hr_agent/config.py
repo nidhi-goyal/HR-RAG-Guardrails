@@ -28,7 +28,7 @@ class Settings:
     pdf_dir: Path = PROJECT_ROOT / "data" / "pdfs"
     training_csv: Path = PROJECT_ROOT / "data" / "guardrail_training.csv"
     chroma_dir: Path = PROJECT_ROOT / "chroma_db"
-    collection_name: str = "fitness_docs"
+    collection_name: str = "HR_docs"
 
 
 settings = Settings()

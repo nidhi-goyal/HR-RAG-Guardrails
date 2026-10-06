@@ -3,7 +3,7 @@
 import sys
 from pathlib import Path
 
-# Make the fitness_agent package in src/ importable without installing the project.
+# Make the hr_agent package in src/ importable without installing the project.
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from collections import Counter
@@ -11,10 +11,10 @@ from collections import Counter
 from rich.console import Console
 from rich.panel import Panel
 
-from fitness_agent.config import settings
-from fitness_agent.rag.chunker import chunk_pages
-from fitness_agent.rag.ingestion import store_chunks
-from fitness_agent.rag.loader import load_pdfs
+from hr_agent.config import settings
+from hr_agent.rag.chunker import chunk_pages
+from hr_agent.rag.ingestion import store_chunks
+from hr_agent.rag.loader import load_pdfs
 
 console = Console()
 

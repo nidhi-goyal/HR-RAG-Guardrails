@@ -1,4 +1,4 @@
-from fitness_agent.rag.models import Chunk, Page
+from hr_agent.rag.models import Chunk, Page
 
 
 def split_text(text: str, chunk_size: int, overlap: int) -> list[str]:

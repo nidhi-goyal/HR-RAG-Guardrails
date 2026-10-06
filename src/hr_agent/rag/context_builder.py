@@ -1,4 +1,4 @@
-from fitness_agent.rag.models import RetrievedChunk
+from hr_agent.rag.models import RetrievedChunk
 
 
 def build_context(chunks: list[RetrievedChunk]) -> str:

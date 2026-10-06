@@ -6,11 +6,11 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline, make_pipeline, make_union
 
-from fitness_agent.config import settings
-from fitness_agent.guardrails.result import GuardrailResult
+from hr_agent.config import settings
+from hr_agent.guardrails.result import GuardrailResult
 
 GUARD_NAME = "nlu"
-ALLOWED_LABEL = "fitness"
+ALLOWED_LABEL = "hr"
 
 
 def load_training_data(path: Path) -> tuple[list[str], list[str]]:

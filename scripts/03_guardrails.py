@@ -3,7 +3,7 @@
 import sys
 from pathlib import Path
 
-# Make the fitness_agent package in src/ importable without installing the project.
+# Make the hr_agent package in src/ importable without installing the project.
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 import argparse
@@ -11,9 +11,9 @@ import argparse
 from rich.console import Console
 from rich.table import Table
 
-from fitness_agent.guardrails.nlu_guard import check_input_nlu
-from fitness_agent.guardrails.output_guard import check_output
-from fitness_agent.guardrails.regex_guard import check_input_regex
+from hr_agent.guardrails.nlu_guard import check_input_nlu
+from hr_agent.guardrails.output_guard import check_output
+from hr_agent.guardrails.regex_guard import check_input_regex
 
 console = Console()
 

@@ -1,6 +1,6 @@
 import re
 
-from fitness_agent.guardrails.result import GuardrailResult
+from hr_agent.guardrails.result import GuardrailResult
 
 GUARD_NAME = "regex"
 MAX_INPUT_LENGTH = 500
@@ -17,6 +17,12 @@ BLOCKED_PATTERNS = {
     "email address": re.compile(r"\b[\w.+-]+@[\w-]+\.[\w.-]+\b"),
     "phone number": re.compile(r"(?<!\d)(\+?\d{1,3}[\s-]?)?\d{10}(?!\d)"),
     "card number": re.compile(r"(?<!\d)(\d{4}[\s-]?){3}\d{4}(?!\d)"),
+    "ssn or national id": re.compile(r"\b\d{3}-\d{2}-\d{4}\b|\b\d{9}\b"),
+    "bank account or routing": re.compile(
+        r"\b(?:iban|account|routing)\s*[:#-]?\s*[A-Z0-9]{8,34}\b|\b\d{8,17}\b",
+        re.IGNORECASE,
+    ),
+    "employee id": re.compile(r"\b(?:emp|employee|staff)[-_ ]?(?:id|number)?[-_ ]?\d{3,10}\b", re.IGNORECASE),
 }
 
 

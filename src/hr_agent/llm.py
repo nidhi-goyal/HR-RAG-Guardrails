@@ -1,7 +1,7 @@
 import os
 from functools import lru_cache
 
-from fitness_agent.config import settings
+from hr_agent.config import settings
 
 
 def build_chat_model(openai_model: str, ollama_model: str):

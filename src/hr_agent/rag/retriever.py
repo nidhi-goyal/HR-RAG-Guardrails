@@ -1,5 +1,5 @@
-from fitness_agent.rag.models import RetrievedChunk
-from fitness_agent.rag.vector_store import get_collection
+from hr_agent.rag.models import RetrievedChunk
+from hr_agent.rag.vector_store import get_collection
 
 
 def retrieve(query: str, top_k: int) -> list[RetrievedChunk]:

@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "fitness-agent"
+name = "hr-agent"
 version = "0.1.0"
 description = "Study project: RAG and guardrails with LangGraph"
 requires-python = ">=3.10"

@@ -1,29 +1,29 @@
 import pytest
 
-from fitness_agent.agent import nodes
-from fitness_agent.agent.graph import build_graph
-from fitness_agent.guardrails.result import GuardrailResult
-from fitness_agent.rag.models import RetrievedChunk
+from hr_agent.agent import nodes
+from hr_agent.agent.graph import build_graph
+from hr_agent.guardrails.result import GuardrailResult
+from hr_agent.rag.models import RetrievedChunk
 
 
 @pytest.fixture
 def fake_pipeline(monkeypatch):
     """Replace every LLM and database call so the graph runs offline."""
-    chunk = RetrievedChunk(text="Rest days help muscles recover.", source="guide.pdf", page=1, distance=0.1)
-    monkeypatch.setattr(nodes, "rewrite_query", lambda question: "rest days recovery")
+    chunk = RetrievedChunk(text="Employees may request annual leave in line with company policy.", source="hr_policy.pdf", page=1, distance=0.1)
+    monkeypatch.setattr(nodes, "rewrite_query", lambda question: "annual leave policy")
     monkeypatch.setattr(nodes, "retrieve", lambda query, top_k: [chunk])
-    monkeypatch.setattr(nodes, "generate_answer", lambda question, context: "Take rest days [1].")
+    monkeypatch.setattr(nodes, "generate_answer", lambda question, context: "Employees may take annual leave [1].")
     monkeypatch.setattr(
         nodes, "check_output", lambda question, context, answer: GuardrailResult("output", True, "ok")
     )
 
 
-def test_fitness_question_flows_through_rag(fake_pipeline):
-    state = build_graph().invoke({"question": "Are rest days important?"})
+def test_hr_question_flows_through_rag(fake_pipeline):
+    state = build_graph().invoke({"question": "Can employees take annual leave?"})
 
-    assert state["search_query"] == "rest days recovery"
-    assert "Rest days help muscles recover." in state["context"]
-    assert state["answer"] == "Take rest days [1]."
+    assert state["search_query"] == "annual leave policy"
+    assert "Employees may request annual leave in line with company policy." in state["context"]
+    assert state["answer"] == "Employees may take annual leave [1]."
     assert [result.guard for result in state["guardrail_results"]] == ["regex", "nlu", "output"]
 
 
@@ -47,6 +47,6 @@ def test_output_block_replaces_answer(fake_pipeline, monkeypatch):
         nodes, "check_output", lambda question, context, answer: GuardrailResult("output", False, "not grounded")
     )
 
-    state = build_graph().invoke({"question": "Are rest days important?"})
+    state = build_graph().invoke({"question": "Can employees take annual leave?"})
 
     assert state["answer"] == nodes.REFUSALS["output"]

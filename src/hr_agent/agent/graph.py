@@ -1,7 +1,7 @@
 from langgraph.graph import END, START, StateGraph
 
-from fitness_agent.agent import nodes
-from fitness_agent.agent.state import AgentState
+from hr_agent.agent import nodes
+from hr_agent.agent.state import AgentState
 
 
 def build_graph():

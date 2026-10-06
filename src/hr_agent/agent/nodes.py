@@ -1,17 +1,17 @@
-from fitness_agent.agent.state import AgentState
-from fitness_agent.config import settings
-from fitness_agent.guardrails.nlu_guard import check_input_nlu
-from fitness_agent.guardrails.output_guard import check_output
-from fitness_agent.guardrails.regex_guard import check_input_regex
-from fitness_agent.rag.context_builder import build_context
-from fitness_agent.rag.generator import generate_answer
-from fitness_agent.rag.query_rewriter import rewrite_query
-from fitness_agent.rag.retriever import retrieve
+from hr_agent.agent.state import AgentState
+from hr_agent.config import settings
+from hr_agent.guardrails.nlu_guard import check_input_nlu
+from hr_agent.guardrails.output_guard import check_output
+from hr_agent.guardrails.regex_guard import check_input_regex
+from hr_agent.rag.context_builder import build_context
+from hr_agent.rag.generator import generate_answer
+from hr_agent.rag.query_rewriter import rewrite_query
+from hr_agent.rag.retriever import retrieve
 
 REFUSALS = {
     "regex": "Sorry, I can't process that message. Please remove personal details or instructions to the assistant.",
-    "nlu": "Sorry, I can only help with safe fitness, exercise and nutrition questions.",
-    "output": "Sorry, I couldn't find a reliable answer to that in my fitness documents.",
+    "nlu": "Sorry, I can only help with safe HR policy, employment, and workplace questions.",
+    "output": "Sorry, I couldn't find a reliable answer to that in my HR documents.",
 }
 
 
